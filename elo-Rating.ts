@@ -46,13 +46,17 @@ function updateBothRatings(getExpectedScores: expectedFighterScores, fighter1Upd
     return updates
 }
 
-
+export type RatingSystem = {getPlayerProbabilities: expectedFighterScores, getNextRating: ratingUpdate, getNextRatings: ratingUpdate;
+}
 
 export function createSystem(kFactor = 32, exponentDenominator = 400 ){
-    const getPlayerProbabilities = createExpectatedScore(exponentDenominator)
-    const getNextRating = updateRating(kFactor)
+    const getExpected = createExpectatedScore(exponentDenominator)
+    const getRating = updateRating(kFactor)
+    const updatedRatings = updateBothRatings(getExpected,getRating,getRating)
 
     return {
-        getPlayerProbabilities, getNextRating
+        getExpected, getRating, updatedRatings
     }
 }
+
+export default createSystem
