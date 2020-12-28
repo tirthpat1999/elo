@@ -41,12 +41,17 @@ function updateBothRatings(getExpectedScores: expectedFighterScores, fighter1Upd
         const [newFighter1Rating, fighter1RatingDiff] = fighter1Update(fighter1Rating, score1, expectedFighter1Score)
         const [newFighter2Rating, fighter2RatingDiff] = fighter2Update(fighter2Rating, (1-score1), expectedFighter2Score)
 
-    return {newFighter1Rating,fighter1RatingDiff, newFighter2Rating, fighter2RatingDiff}
+    return {expectedFighter1Score,newFighter1Rating,fighter1RatingDiff,expectedFighter2Score, newFighter2Rating, fighter2RatingDiff}
     }
     return updates
 }
 
-export type RatingSystem = {getPlayerProbabilities: expectedFighterScores, getNextRating: ratingUpdate, getNextRatings: ratingUpdate;
+
+
+
+
+
+/* export type RatingSystem = {getPlayerProbabilities: expectedFighterScores, getNextRating: ratingUpdate, getNextRatings: ratingUpdate;
 }
 
 export function createSystem(kFactor = 32, exponentDenominator = 400 ){
@@ -59,4 +64,4 @@ export function createSystem(kFactor = 32, exponentDenominator = 400 ){
     }
 }
 
-export default createSystem
+export default createSystem */
