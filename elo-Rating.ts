@@ -36,12 +36,10 @@ function updateRating(k: number): ratingUpdate {
 }
 
 function updateBothRatings(getExpectedScores: expectedFighterScores, fighter1Update: ratingUpdate,fighter2Update: ratingUpdate ) {
-    const updates = (fighter1Rating: number,fighter2Rating: number, score1:number, score2:number ) =>{
+    const updates = (fighter1Rating: number,fighter2Rating: number, score1:number ) =>{
         const [expectedFighter1Score, expectedFighter2Score] = getExpectedScores(fighter1Rating, fighter2Rating)
-        const fighter1Score = score1
-        const fighter2Score = score2
         const [newFighter1Rating, fighter1RatingDiff] = fighter1Update(fighter1Rating, score1, expectedFighter1Score)
-        const [newFighter2Rating, fighter2RatingDiff] = fighter2Update(fighter2Rating, score2, expectedFighter2Score)
+        const [newFighter2Rating, fighter2RatingDiff] = fighter2Update(fighter2Rating, (1-score1), expectedFighter2Score)
 
     return {newFighter1Rating,fighter1RatingDiff, newFighter2Rating, fighter2RatingDiff}
     }
